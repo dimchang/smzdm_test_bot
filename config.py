@@ -1,27 +1,22 @@
-"""
-请求头
-"""
-DEFAULT_HEADERS = {
-        'Accept': '*/*',
-        'Accept-Encoding': 'gzip, deflate, br',
-        'Accept-Language': 'zh-CN,zh;q=0.9',
-        'Connection': 'keep-alive',
-        'Host': 'zhiyou.smzdm.com',
-        'Referer': 'https://www.smzdm.com/',
-        'Sec-Fetch-Dest': 'script',
-        'Sec-Fetch-Mode': 'no-cors',
-        'Sec-Fetch-Site': 'same-site',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36',
-        }
+import os
+import configparser
 
 
-"""
-调试用 COOKIE
-"""
-TEST_COOKIE = ''
+class Config(object):
+    def __init__(self, config_file='config.ini'):
+        self._path = os.path.join(os.getcwd(), config_file)
+        if not os.path.exists(self._path):
+            raise FileNotFoundError("No such file: config.ini")
+        self._config = configparser.ConfigParser()
+        self._config.read(self._path, encoding='utf-8-sig')
+        self._configRaw = configparser.RawConfigParser()
+        self._configRaw.read(self._path, encoding='utf-8-sig')
+
+    def get(self, section, name):
+        return self._config.get(section, name)
+
+    def getRaw(self, section, name):
+        return self._configRaw.get(section, name)
 
 
-"""
-调试用 SERVERCHAN_SECRETKEY
-"""
-SERVERCHAN_SECRETKEY = ''
+global_config = Config()
