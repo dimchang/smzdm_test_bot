@@ -51,7 +51,7 @@ class SMZDM_Bot(object):
                 result=msg.json()['data']['checkin_num']
                 print(result)
                 #logger.info('检测到 SCKEY: {}'.format(SERVERCHAN_SECRETKEY))
-                push_to_wechat(text = '什么值得买每日签到@'+result,
+                push_to_wechat(text = '什么值得买每日签到@'+str(result),
                             desp = msg,
                             secretKey = SERVERCHAN_SECRETKEY)
             return msg.json()
