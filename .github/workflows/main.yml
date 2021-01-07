@@ -5,9 +5,9 @@ name: "GitHub Actions SMZDM Bot"
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the main branch
 on:
-  push:
+  #push:
     # branches: [ main ]
-  pull_request:
+  #pull_request:
     #branches: [ main ]
   schedule:
     - cron: '5 0 * * *'
@@ -30,9 +30,9 @@ jobs:
           python-version: 3.8
 
       # Runs a set of commands using the runners shell
-      - name: Install requirements
-        run: |
-          pip install -r requirements.txt
+      #- name: Install requirements
+      #  run: |
+      #    pip install -r requirements.txt
 
       - name: Working
         env:
