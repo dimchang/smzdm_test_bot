@@ -31,9 +31,9 @@ jobs:
           python-version: 3.8
 
       # Runs a set of commands using the runners shell
-      #- name: Install requirements
-      #  run: |
-      #    pip install -r requirements.txt
+      - name: Install requirements
+        run: |
+          pip install -r requirements.txt
 
       - name: Working
         env:
